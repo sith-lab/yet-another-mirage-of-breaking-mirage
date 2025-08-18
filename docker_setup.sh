@@ -12,12 +12,10 @@ if [ ! -d "$PROJECT_DIR" ]; then
 fi
 
 ## 2. Copy scripts
-cp run_aessetup.sh $PROJECT_DIR/.
-cp run_mirage.sh $PROJECT_DIR/.
-cp run.sh $PROJECT_DIR/.
+cp -r helper_scripts $PROJECT_DIR/.
 
 ## 2. Compile Docker
-./dockerrun.sh 0
+./docker/dockerrun.sh 0
 
 ## 3. Run Docker Container (compile gem5)
-./dockerrun.sh 1
+./docker/dockerrun.sh 1
