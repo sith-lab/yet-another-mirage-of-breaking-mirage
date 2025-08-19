@@ -2,7 +2,8 @@
 
 REPRO_DIR=/code/reproduction
 
-## Run Experiments
+## Run Experiments For Fig 1, 2, 4.
+
 for i in {1..100}; do
     $REPRO_DIR/run_scripts/run_mirage.sh $i &
 done
@@ -21,22 +22,19 @@ while true; do
     fi
 done
 
-## Analyze GE
-#mirage (rco)
-$REPRO_DIR/analysis_scripts/run_analysis.sh /code/aes/analysis/mirage/key1 /code/aes/analysis/mirage/key2
+## Plot Fig1
+cd $REPRO_DIR/analysis_scripts/fig1_4/fig1 ;
+./plot_fig1.sh ;
+cd $REPRO_DIR ; 
 
-#sass (rco)
-$REPRO_DIR/analysis_scripts/run_analysis.sh /code/aes/analysis/sass/key1 /code/aes/analysis/sass/key2
-
-#scatter
-$REPRO_DIR/analysis_scripts/run_analysis.sh /code/aes/analysis/scatter/key1 /code/aes/analysis/scatter/key2
-
-#ceaser
-$REPRO_DIR/analysis_scripts/run_analysis.sh /code/aes/analysis/ceaser/key1 /code/aes/analysis/ceaser/key2
+## Plot Fig4
+cd $REPRO_DIR/analysis_scripts/fig1_4/fig4 ;
+./plot_fig4.sh ;
+cd $REPRO_DIR ; 
 
 #mirage (reproduction)
-$REPRO_DIR/analysis_scripts/run_analysis.sh $REPRO_DIR/repro_results/L1512B.SeedFixed/profiled $REPRO_DIR/repro_results/L1512B.SeedFixed/victim
-$REPRO_DIR/analysis_scripts/run_analysis.sh $REPRO_DIR/repro_results/L1512B.SeedRand/profiled $REPRO_DIR/repro_results/L1512B.SeedRand/victim
-$REPRO_DIR/analysis_scripts/run_analysis.sh $REPRO_DIR/repro_results/L164kB.SeedRand/profiled $REPRO_DIR/repro_results/L164kB.SeedRand/victim
+$REPRO_DIR/analysis_scripts/fig1_4/run_analysis.sh $REPRO_DIR/repro_results/L1512B.SeedFixed/profiled $REPRO_DIR/repro_results/L1512B.SeedFixed/victim
+$REPRO_DIR/analysis_scripts/fig1_4/run_analysis.sh $REPRO_DIR/repro_results/L1512B.SeedRand/profiled $REPRO_DIR/repro_results/L1512B.SeedRand/victim
+$REPRO_DIR/analysis_scripts/fig1_4/run_analysis.sh $REPRO_DIR/repro_results/L164kB.SeedRand/profiled $REPRO_DIR/repro_results/L164kB.SeedRand/victim
 
 
