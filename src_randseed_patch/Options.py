@@ -483,7 +483,7 @@ def addMirageOptions(parser):
     parser.add_option("--l2_TDR", type="float", default=1.5)
     parser.add_option("--l2_EncrLat", type="int", default=3)
     parser.add_option("--replacement-policy", action="store", type="string", default="None", help="Replacement policy to use")
-    parser.add_option("--randseed-global-evictions", action="store", type="string", default="Enabled", help="Set Random Seed for RNG used for Global Evictions")
+    parser.add_option("--randseed-global-evictions", action="store_true", help="Enable Random Seed for RNG used for Global Evictions")
 
 def addMultiprogramOptions(parser):
     parser.add_option("--rate-mode", action="store_true", help="Enable rate-mode execution of single WL")

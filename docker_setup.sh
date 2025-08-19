@@ -13,9 +13,9 @@ if [ ! -d "$PROJECT_DIR" ]; then
 fi
 
 ## 2. Copy scripts
-cp -r helper_scripts $PROJECT_DIR/.
-mkdir -p $PROJECT_DIR/repro_results
-cp -r analysis_scripts $PROJECT_DIR/repro_results/.
+mkdir -p $PROJECT_DIR/reproduction 
+cp -r run_scripts $PROJECT_DIR/reproduction/.
+cp -r analysis_scripts $PROJECT_DIR/reproduction/.
 
 ## 3. Copy Patch for Global Random Evictions Random RNG Seed
 cp src_randseed_patch/vway_tags.cc $PROJECT_DIR/mirage/perf_analysis/gem5/src/mem/cache/tags/vway_tags.cc
@@ -25,7 +25,8 @@ cp src_randseed_patch/Options.py   $PROJECT_DIR/mirage/perf_analysis/gem5/config
 cp src_randseed_patch/CacheConfig.py $PROJECT_DIR/mirage/perf_analysis/gem5/configs/common/CacheConfig.py
 
 ## 4. Compile Docker
-./docker/dockerrun.sh 0
+cd docker;
+./dockerrun.sh 0
 
 ## 5. Run Docker Container (compile gem5)
-./docker/dockerrun.sh 1
+./dockerrun.sh 1

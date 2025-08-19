@@ -20,9 +20,9 @@ for j in {100..1000..50}
 do
     for i in {0..15}
     do 
-	python3 /code/repro_results/analysis_scripts/analysis.py $i $j $profiled_key_dir $victim_key_dir >> ranks.txt
+	python3 /code/reproduction/repro_results/analysis_scripts/analysis.py $i $j $profiled_key_dir $victim_key_dir >> ranks.txt
     done
     echo -n "For $j traces: GE = "
-    python3 /code/repro_results/analysis_scripts/guessing_entropy.py
+    python3 /code/reproduction/repro_results/analysis_scripts/guessing_entropy.py
     rm ranks.txt
 done

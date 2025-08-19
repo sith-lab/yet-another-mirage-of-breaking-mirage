@@ -22,7 +22,8 @@ if [ "$1" == "0" ]; then
     docker build -t rco-container .
 
     ## kills existing containers if it exists:
-    docker ps -q --filter "name=rco-env" | grep -q . && docker stop rco-env && docker rm -fv rco-env
+    docker rm -f rco-env >/dev/null 2>&1 || true
+    sleep 5s;
 fi
 
 # Run mode

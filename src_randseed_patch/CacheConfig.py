@@ -148,6 +148,7 @@ def config_cache(options, system):
             # Set random seed for RNG used for global evictions.
             if(options.randseed_global_evictions is not None):
                 system.l2.randseed_global_evictions = True
+                print("Used Random Seed")
                 
             if(options.replacement_policy is not None):
                 # Set user defined replacement policy
