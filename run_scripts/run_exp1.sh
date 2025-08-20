@@ -32,9 +32,5 @@ cd $REPRO_DIR/analysis_scripts/fig1_4/fig4 ;
 ./plot_fig4.sh ;
 cd $REPRO_DIR ; 
 
-#mirage (reproduction)
-$REPRO_DIR/analysis_scripts/fig1_4/run_analysis.sh $REPRO_DIR/repro_results/L1512B.SeedFixed/profiled $REPRO_DIR/repro_results/L1512B.SeedFixed/victim
-$REPRO_DIR/analysis_scripts/fig1_4/run_analysis.sh $REPRO_DIR/repro_results/L1512B.SeedRand/profiled $REPRO_DIR/repro_results/L1512B.SeedRand/victim
-$REPRO_DIR/analysis_scripts/fig1_4/run_analysis.sh $REPRO_DIR/repro_results/L164kB.SeedRand/profiled $REPRO_DIR/repro_results/L164kB.SeedRand/victim
 
 
