@@ -10,7 +10,7 @@ export SPEC_DIR=/code
 ###
 
 ## Run mirage for four plaintext-ciphertexts AES 
-for ct in "CT1" "CT2" "CT3" "CT4"; do
+for ct in "ct1" "ct2" "ct3" "ct4"; do
 
     ## for 2 configs (fixed seed, random seed)
     for all_configs in "512B Fixed" "512B Rand"; do

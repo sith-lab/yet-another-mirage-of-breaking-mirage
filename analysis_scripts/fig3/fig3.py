@@ -10,7 +10,7 @@ dir_fixed = "/code/reproduction/repro_results/fixedCT/L1512B.SeedFixed"
 # Input files
 filenames_rand = []
 filenames_fixed = []
-for ct in ["CT1", "CT2", "CT3", "CT4"] :
+for ct in ["ct1", "ct2", "ct3", "ct4"] :
     filenames_rand.append(f"/code/reproduction/repro_results/fixedCT/L1512B.SeedRand/{ct}/run_results.txt")
     filenames_fixed.append(f"/code/reproduction/repro_results/fixedCT/L1512B.SeedFixed/{ct}/run_results.txt")
 

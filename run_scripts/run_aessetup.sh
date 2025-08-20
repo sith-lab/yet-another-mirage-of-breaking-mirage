@@ -33,7 +33,7 @@ for ct in ct1 ct2 ct3 ct4 ; do
     # create gem5 AES configs.
     cd /code/mirage/perf_analysis/gem5/configs/example ;
     sed \
-	's|/randomized_cache_hello_world/spurious_occupancy|/aes/aes_profiled_key_fixed_${ct}/C/AES-TBOX|g' \
+	"s|/randomized_cache_hello_world/spurious_occupancy|/aes/aes_profiled_key_fixed_${ct}/C/AES-TBOX|g" \
 	spec06_config_multiprogram.py \
 	> spec06_config_aes_fixed${ct}.py
 done

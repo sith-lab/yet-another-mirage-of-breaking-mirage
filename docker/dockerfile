@@ -39,7 +39,7 @@ RUN wget https://bootstrap.pypa.io/pip/2.7/get-pip.py && \
     python get-pip.py
 
 RUN python -m pip install six   # For Python 2
-RUN python3 -m pip install numpy scipy matplotlib # For Python 3
+RUN python3 -m pip install numpy scipy matplotlib pandas # For Python 3
 
 # Set working directory
 WORKDIR /code

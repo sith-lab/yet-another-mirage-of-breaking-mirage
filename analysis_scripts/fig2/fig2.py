@@ -48,7 +48,7 @@ for sub in subfolders:
     for file in sorted(os.listdir(sub_dir)):
         if file.endswith(".txt"):
             file_paths.append((os.path.join(sub_dir, file), file, sub))
-print(file_paths)
+#print(file_paths)
 
 mats, titles, groups, meds = [], [], [], []
 for path, title, subfolder in file_paths:

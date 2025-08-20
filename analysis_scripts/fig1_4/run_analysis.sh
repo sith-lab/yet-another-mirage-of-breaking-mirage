@@ -16,7 +16,7 @@ victim_key_dir=$2
 
 echo "Analyzing GE for ${profiled_key_dir} and ${victim_key_dir}"
 
-for j in {100..1000..50}
+for j in {50..1000..50}
 do
     for i in {0..15}
     do 

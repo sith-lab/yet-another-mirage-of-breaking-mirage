@@ -1,16 +1,17 @@
 import matplotlib.pyplot as plt
+import pandas as pd
 
 # ----------------------------
 # Data
 # ----------------------------
 traces = [50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750, 800, 850, 900, 950, 1000]
 
-mirage_repro = pd.read_csv("data/ge_mirage_repro.csv", header=None)[0].tolist()
-mirage_rco   = pd.read_csv("data/ge_mirage_rco.csv", header=None)[0].tolist()
-ceasers_rco  = pd.read_csv("data/ge_ceasers_rco.csv", header=None)[0].tolist()
-sass_rco     = pd.read_csv("data/ge_sass_rco.csv", header=None)[0].tolist()
-scatter_rco  = pd.read_csv("data/ge_scatter_rco.csv", header=None)[0].tolist()
 
+mirage_repro = pd.read_csv("data/ge_mirage_repro.csv", header=None, delim_whitespace=True, skiprows=1)[5].astype(float).tolist()
+mirage_rco   = pd.read_csv("data/ge_mirage_rco.csv",   header=None, delim_whitespace=True, skiprows=1)[5].astype(float).tolist()
+ceasers_rco  = pd.read_csv("data/ge_ceasers_rco.csv",  header=None, delim_whitespace=True, skiprows=1)[5].astype(float).tolist()
+sass_rco     = pd.read_csv("data/ge_sass_rco.csv",     header=None, delim_whitespace=True, skiprows=1)[5].astype(float).tolist()
+scatter_rco  = pd.read_csv("data/ge_scatter_rco.csv",  header=None, delim_whitespace=True, skiprows=1)[5].astype(float).tolist()
 
 # ----------------------------
 # Plot styling
@@ -51,7 +52,7 @@ plt.plot(
 )
 plt.plot(
     traces,
-    ceaser_s_rco,
+    ceasers_rco,
     label="CEASER-S (RCO)",
     linewidth=1.8,
     linestyle="--",
