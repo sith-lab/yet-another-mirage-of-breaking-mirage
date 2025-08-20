@@ -2,7 +2,9 @@
 
 REPRO_DIR=/code/reproduction
 
+#####
 ## Run Experiments For Fig 1, 2, 4.
+#####
 
 for i in {1..100}; do
     $REPRO_DIR/run_scripts/run_mirage.sh $i &
@@ -25,12 +27,15 @@ done
 ## Plot Fig1
 cd $REPRO_DIR/analysis_scripts/fig1_4/fig1 ;
 ./plot_fig1.sh ;
-cd $REPRO_DIR ; 
 
 ## Plot Fig4
 cd $REPRO_DIR/analysis_scripts/fig1_4/fig4 ;
 ./plot_fig4.sh ;
-cd $REPRO_DIR ; 
+
+## Plot Fig2
+cd $REPRO_DIR/analysis_scripts/fig2 ; 
+./plot_fig2.sh ;
+
 
 
 
