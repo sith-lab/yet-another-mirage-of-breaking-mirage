@@ -4,12 +4,13 @@ export BASE_DIR=/code
 export SPEC_DIR=/code
 
 ###
-## Default: Fixed Seed, 512B
-## Other Configs: == Rand Seed, 512B
-##                == Rand Seed, 64kB
+## Run Mirage Simulations for Exp-1, 2, 4.
+## Configs: == Fixed Seed, 512B
+##        : == Rand Seed, 512B
+##          == Rand Seed, 64kB
 ###
 
-## run 10 serial simulations
+## Run 10 serial simulations
 for j in {1..10}; do
 
     ## for all 3 configs
@@ -31,7 +32,8 @@ for j in {1..10}; do
 	    stats=stats_${1}_${j}
 	    OUTDIR=${BASE_DIR}/reproduction/repro_results/${CONFIG}/${key}
 	    mkdir -p $OUTDIR/$stats
-	    
+
+	    # Run Mirage
 	    /code/mirage/perf_analysis/gem5/build/X86/gem5.opt --outdir ${OUTDIR}/${stats} /code/mirage/perf_analysis/gem5/configs/example/spec06_config_aes_${key}.py --num-cpus=1 --mem-size=8GB \
 							       --mem-type=DDR4_2400_8x8 --cpu-type TimingSimpleCPU --caches --l2cache \
 							       --l1d_size=${cache}  ${seed_str} \

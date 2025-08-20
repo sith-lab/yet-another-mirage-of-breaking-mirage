@@ -7,6 +7,7 @@ REPRO_DIR=/code/reproduction
 ###########
 mkdir -p ./data
 
+echo "Data analysis for Figure 4"
 #mirage (rco)
 $REPRO_DIR/analysis_scripts/fig1_4/run_analysis.sh /code/aes/analysis/mirage/key1 /code/aes/analysis/mirage/key2 > $REPRO_DIR/analysis_scripts/fig1_4/fig4/data/ge_mirage_rco.csv
 
@@ -19,4 +20,5 @@ $REPRO_DIR/analysis_scripts/fig1_4/run_analysis.sh $REPRO_DIR/repro_results/L164
 ## Plot Fig 4
 ###########
 
+echo "Plotting Figure 4"
 python3 fig4.py

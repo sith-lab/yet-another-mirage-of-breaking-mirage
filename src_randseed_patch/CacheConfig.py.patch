@@ -1,0 +1,14 @@
+--- mirage/perf_analysis/gem5/configs/common/CacheConfig.py	2025-02-14 07:49:06.000000000 +0000
++++ ../../src_randseed_patch/CacheConfig.py	2025-08-19 19:01:18.518367862 +0000
+@@ -145,6 +145,11 @@
+             else:
+                 fatal("Used a mirage_mode that is not supported")
+ 
++            # Set random seed for RNG used for global evictions.
++            if(options.randseed_global_evictions is not None):
++                system.l2.randseed_global_evictions = True
++                print("Used Random Seed")
++                
+             if(options.replacement_policy is not None):
+                 # Set user defined replacement policy
+                 if(options.replacement_policy == "RandomRP"):

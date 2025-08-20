@@ -1,3 +1,13 @@
+#!/bin/bash
+
+# Usage: ./docker_setup.sh [mode]
+# mode options:
+#   default (no argument) → Apply Patch + run_exp_all
+#   0 → Apply Patch + run_exp_all
+#   1 → Skip Patch + run_exp_1 
+
+MODE=${1:-0}   # default is 0
+
 ## 1. Set up RCO [SEC'25] repository
 PROJECT_DIR="NimishMishra-randomized_caches-fc07ea6"
 ZIP_FILE="randomized_caches-v2.0.zip"
@@ -17,13 +27,24 @@ mkdir -p $PROJECT_DIR/reproduction
 cp -r run_scripts $PROJECT_DIR/reproduction/.
 cp -r analysis_scripts $PROJECT_DIR/reproduction/.
 
-## 3. Copy Patch for Global Random Evictions Random RNG Seed
-cp src_randseed_patch/vway_tags.cc $PROJECT_DIR/mirage/perf_analysis/gem5/src/mem/cache/tags/vway_tags.cc
-cp src_randseed_patch/Tags.py      $PROJECT_DIR/mirage/perf_analysis/gem5/src/mem/cache/tags/Tags.py 
-cp src_randseed_patch/Cache.py     $PROJECT_DIR/mirage/perf_analysis/gem5/src/mem/cache/Cache.py 
-cp src_randseed_patch/Options.py   $PROJECT_DIR/mirage/perf_analysis/gem5/configs/common/Options.py
-cp src_randseed_patch/CacheConfig.py $PROJECT_DIR/mirage/perf_analysis/gem5/configs/common/CacheConfig.py
 
+if [[ "$MODE" == "0" ]]; then
+    cd $PROJECT_DIR ; 
+    ## 3. Copy Patch for Global Random Evictions Random RNG Seed
+    patch --forward --silent mirage/perf_analysis/gem5/src/mem/cache/tags/vway_tags.cc < ../src_randseed_patch/vway_tags.cc.patch
+    patch --forward --silent mirage/perf_analysis/gem5/src/mem/cache/tags/Tags.py      < ../src_randseed_patch/Tags.py.patch        
+    patch --forward --silent mirage/perf_analysis/gem5/src/mem/cache/Cache.py 	       < ../src_randseed_patch/Cache.py.patch               
+    patch --forward --silent mirage/perf_analysis/gem5/configs/common/Options.py       < ../src_randseed_patch/Options.py.patch             
+    patch --forward --silent mirage/perf_analysis/gem5/configs/common/CacheConfig.py   < ../src_randseed_patch/CacheConfig.py.patch
+    cd -;
+else
+    echo "Skipping Patch to src files."
+    ## Make sure to unpatch if previously patched.
+    cd src_randseed_patch ;
+    ./unpatch.sh ;
+    cd .. ;
+fi
+    
 ## 4. Compile Docker
 cd docker;
 ./dockerrun.sh 0

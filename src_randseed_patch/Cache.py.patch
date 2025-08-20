@@ -1,0 +1,12 @@
+--- mirage/perf_analysis/gem5/src/mem/cache/Cache.py	2025-02-14 07:49:06.000000000 +0000
++++ ../../src_randseed_patch/Cache.py	2025-08-19 15:41:05.239942575 +0000
+@@ -110,6 +110,9 @@
+     #Skewed Randomized V-way cache
+     p2_on_conflict = Param.Bool(False, "Enables preferential choice of skew on conflict")
+     cuckoo_on_conflict = Param.Bool(False, "Enables refill on conflict")
++    #Random Seed for Global Evictions (true/false)
++    randseed_global_evictions = Param.Bool(False,
++                                           "Enables Random Seed for RNG Used for Global Evictions")
+     
+     prefetcher = Param.BasePrefetcher(NULL,"Prefetcher attached to cache")
+     prefetch_on_access = Param.Bool(False,

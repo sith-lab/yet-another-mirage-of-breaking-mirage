@@ -7,6 +7,7 @@ REPRO_DIR=/code/reproduction
 ###########
 mkdir -p ./data
 
+echo "Data analysis for Figure 1"
 #mirage, sass, scatter, ceaser (rco)
 $REPRO_DIR/analysis_scripts/fig1_4/run_analysis.sh /code/aes/analysis/mirage/key1 /code/aes/analysis/mirage/key2 > $REPRO_DIR/analysis_scripts/fig1_4/fig1/data/ge_mirage_rco.csv
 $REPRO_DIR/analysis_scripts/fig1_4/run_analysis.sh /code/aes/analysis/sass/key1 /code/aes/analysis/sass/key2 > $REPRO_DIR/analysis_scripts/fig1_4/fig1/data/ge_sass_rco.csv
@@ -20,4 +21,5 @@ $REPRO_DIR/analysis_scripts/fig1_4/run_analysis.sh $REPRO_DIR/repro_results/L151
 ## Plot Fig 1
 ###########
 
+echo "Plotting Figure 1"
 python3 fig1.py

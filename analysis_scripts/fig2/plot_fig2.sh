@@ -18,4 +18,5 @@ cp $REPRO_DIR/repro_results/L1512B.SeedRand/victim/run_results.txt    ./data/vic
 ## Plot Fig 4
 ###########
 
+echo "Plotting Figure 2"
 python3 fig2.py

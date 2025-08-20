@@ -1,0 +1,20 @@
+--- C/victim.cpp	2025-02-14 07:49:06.000000000 +0000
++++ victim_high1/victim.cpp	2025-08-11 21:26:15.202431810 +0000
+@@ -68,13 +68,13 @@
+ int main(){
+     uint8_t data;
+     BYTE bKey[16] = { 0xff, 0xee, 0xdd, 0xcc, 0xbb, 0xaa, 0x99, 0x88, 0x77, 0x66, 0x55, 0x44, 0x33, 0x22, 0x11, 0x00 }; 
+-
+-    BYTE bInput[16];
++    BYTE bInput[16] = { 0xa7, 0xd9, 0x60, 0xe3, 0xea, 0xc4, 0xb8, 0x84, 0xfd, 0xcd, 0xe5, 0x14, 0x38, 0xed, 0xb0, 0x07 };
++    
+     std::random_device rd;
+     std::mt19937 gen(rd());
+     std::uniform_int_distribution<> dist(0, 255);
+-    for (int i = 0; i < 16; i++)
+-	    bInput[i] = dist(gen);
++    //for (int i = 0; i < 16; i++)
++    // bInput[i] = dist(gen);
+     BYTE bExpKey[176];
+     KeyExpansion(bKey, bExpKey);
+     ComputeTBoxes();   

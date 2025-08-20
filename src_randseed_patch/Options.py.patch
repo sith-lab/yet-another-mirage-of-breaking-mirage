@@ -1,0 +1,10 @@
+--- mirage/perf_analysis/gem5/configs/common/Options.py	2025-02-14 07:49:06.000000000 +0000
++++ ../../src_randseed_patch/Options.py	2025-08-19 19:52:30.611482387 +0000
+@@ -483,6 +483,7 @@
+     parser.add_option("--l2_TDR", type="float", default=1.5)
+     parser.add_option("--l2_EncrLat", type="int", default=3)
+     parser.add_option("--replacement-policy", action="store", type="string", default="None", help="Replacement policy to use")
++    parser.add_option("--randseed-global-evictions", action="store_true", help="Enable Random Seed for RNG used for Global Evictions")
+ 
+ def addMultiprogramOptions(parser):
+     parser.add_option("--rate-mode", action="store_true", help="Enable rate-mode execution of single WL")

@@ -1,0 +1,34 @@
+--- mirage/perf_analysis/gem5/src/mem/cache/tags/vway_tags.cc	2025-02-14 07:49:06.000000000 +0000
++++ ../../src_randseed_patch/vway_tags.cc	2025-08-19 16:29:37.454904740 +0000
+@@ -50,6 +50,7 @@
+ #include <string>
+ 
+ #include "base/intmath.hh"
++#include <random>
+ 
+ VwayTags::VwayTags(const Params *p)
+     :BaseTags(p),
+@@ -62,10 +63,21 @@
+      datablk_reuse_victimID(0),
+      numDataBlocks(p->cache_size / p->block_size),
+      sequentialAccess(p->sequential_access),
+-     replacementPolicy(p->replacement_policy),
+-     mt_rand(42)
++     replacementPolicy(p->replacement_policy)
+ {
+ 
++  // Seed with Real Random Number Generator.
++  if(p->randseed_global_evictions){
++    std::random_device rd;
++    uint32_t val = rd();
++    mt_rand.seed(val);    
++    DPRINTFN("RNG seed for Global evictions %d\n",val);
++  }
++  else {
++    mt_rand.seed(42);
++    DPRINTFN("RNG seed for Global evictions %d\n",42);
++  }
++  
+   //Initialize the data-replacement policy
+   if(p->data_repl_policy == "random")
+     data_repl_policy = DATA_REPL_RANDOM;
