@@ -28,8 +28,8 @@ For full reproduction of all our figures 1 to 4:
 
 1. Build the docker container and gem5 *with* our fixes. 
 ```
-cd rco_reproduction;
-./docker_setup.sh;
+cd rco_reproduction
+./docker_setup.sh
 ```
 
 2. Inside the docker container:
@@ -52,8 +52,8 @@ For only reproducing our Figure 1, i.e., just the results of Systematic Evaluati
 
 1. Build the docker container and gem5 *without* our fixes. 
 ```
-cd rco_reproduction;
-./docker_setup.sh 1;
+cd rco_reproduction
+./docker_setup.sh 1
 ```
 
 2. Inside the docker container:
