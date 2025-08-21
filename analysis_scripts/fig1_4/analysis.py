@@ -36,9 +36,12 @@ expected_key_byte = victim_key[position]
 def list_files_in_subdirectories(path):
     all_files = []
     for root, dirs, files in os.walk(path):
+        # only add *results* files (e.g., run_results.txt in our experiments, or  that already includes all the files from the sub-directories.
         for single_file in files:
-            test_file = os.path.join(root, single_file)
-            all_files.append(test_file)
+            if (( "run_results.txt" in single_file) or ("timing_values_run" in single_file)):
+                test_file = os.path.join(root, single_file)
+                all_files.append(test_file)
+        break # stop os.walk at the top level.
     return all_files
 
 

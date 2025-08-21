@@ -47,4 +47,5 @@ WORKDIR /code
 # compile mirage
 WORKDIR /code/mirage/perf_analysis/gem5/
 # CMD scons -j50 build/X86/gem5.opt; cd /code ; ./reproduction/run_scripts/run_aessetup.sh ; export SPEC_PATH=/code; export BASE_DIR=/code ; cd /code/reproduction/run_scripts; /bin/bash
-CMD scons -j50 build/X86/gem5.opt; cd /code ; ./reproduction/run_scripts/run_aessetup.sh ;   export SPEC_PATH=/code; export BASE_DIR=/code ; /bin/bash
+#CMD scons -j50 build/X86/gem5.opt; cd /code ; ./reproduction/run_scripts/run_aessetup.sh ;   export SPEC_PATH=/code; export BASE_DIR=/code ; /bin/bash
+CMD scons -j50 build/X86/gem5.opt; cd /code ; ./reproduction/run_scripts/run_aessetup.sh ;   export SPEC_PATH=/code; export BASE_DIR=/code ; cd /code/reproduction/run_scripts; ./run_exp_all.sh ; /bin/bash

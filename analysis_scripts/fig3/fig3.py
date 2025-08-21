@@ -2,6 +2,7 @@ import re
 import matplotlib.pyplot as plt
 from collections import defaultdict
 import numpy as np
+from matplotlib.ticker import ScalarFormatter
 
 # Directory for Input data files
 dir_rand = "/code/reproduction/repro_results/fixedCT/L1512B.SeedRand"
@@ -14,15 +15,20 @@ for ct in ["ct1", "ct2", "ct3", "ct4"] :
     filenames_rand.append(f"/code/reproduction/repro_results/fixedCT/L1512B.SeedRand/{ct}/run_results.txt")
     filenames_fixed.append(f"/code/reproduction/repro_results/fixedCT/L1512B.SeedFixed/{ct}/run_results.txt")
 
+    
+# Input file
+filename_rand = "L1512B.SeedRand/run_results.txt"
+filename_fixed = "L1512B.SeedF/run_results.txt"
+
 # Regex to capture access time and ciphertext
 pattern = re.compile(
         r"Attacker access time\(.*?\):\s*(\d+),\s*for ciphertext:\s*([0-9a-f ]+)",
         re.IGNORECASE
     )
 
-##########
+
 # Random
-##########
+data = defaultdict(list)
 
 data = defaultdict(list)
 
@@ -35,32 +41,11 @@ for filename_rand in filenames_rand :
                 ct = " ".join(match.group(2).split())  # normalize spaces
                 data[ct].append(time)
 
-#colors = plt.cm.tab20(np.linspace(0, 1, len(data.keys())))  # colormap with enough colors
-color_list = ['red', 'green', 'blue', 'orange', 'purple', 'cyan', 'magenta', 'yellow']
+# Color list
+color_list = ["tab:blue", "tab:orange", "tab:green", "tab:red",
+              "tab:purple", "tab:brown", "tab:pink", "tab:gray", "tab:olive", "tab:cyan"]
 
-# Plot histogram
-plt.figure(figsize=(10, 6))
-plt.ticklabel_format(style='plain', useOffset=False)
-
-#bins = 20  # adjust as needed
-
-for i, (ct, times) in enumerate(data.items()):
-    #print(times)
-    #plt.hist(times, alpha=0.6, label=f"Ciphertext {i+1}")
-    plt.hist(times, alpha=0.6, label=ct, color=color_list[i%len(color_list)])
-                
-plt.xlabel("Access Time")
-plt.ylabel("Frequency")
-plt.title("Histogram of Access Times per Unique Ciphertext")
-plt.legend()
-plt.tight_layout()
-plt.savefig("access_times_histogram.pdf")
-#plt.show()
-
-##########
-## Fixed.
-#########@
-
+# --- Prepare data for fixed set ---
 data_fixed = defaultdict(list)
 
 for filename_fixed in filenames_fixed :
@@ -75,49 +60,77 @@ for filename_fixed in filenames_fixed :
 cts = []
 ct_time_fixed = []
 freqs = []
-
 for ct, times_list in data_fixed.items():
     cts.append(ct)
     ct_time_fixed.append(times_list[0])
     freqs.append(len(times_list))
 
-# Group bars by their x position (access time)
-groups = defaultdict(list)
-for i, x in enumerate(ct_time_fixed):
-    groups[x].append(i)
+# Group bars with the same X value
+groups = {}
+for idx, x_val in enumerate(ct_time_fixed):
+    groups.setdefault(x_val, []).append(idx)
 
-# Prepare figure
-plt.figure(figsize=(12, 6))
-plt.ticklabel_format(style='plain', useOffset=False)
+# --- Create figure ---
+fig, (ax2, ax1) = plt.subplots(1, 2, figsize=(10, 3))
 
-bars = []
+"""
+# ---- First plot: histogram for random ----
+for i, (ct, times) in enumerate(data.items()):
+    ax1.hist(times, alpha=0.6, label=f"Ciphertext {i+1}", color=color_list[i % len(color_list)])
+ax1.set_xlabel("Access Time")
+ax1.set_ylabel("Frequency")
+ax1.set_title("Histogram of Access Times per Unique Ciphertext (Random)")
+ax1.legend()
+ax1.xaxis.set_major_formatter(ScalarFormatter())
+ax1.ticklabel_format(style='plain', axis='x')  # disable scientific notation
+"""
 
-# Width and offset params
+# ---- Second plot: bar chart for fixed ----
 bar_width = 30
-max_offset = bar_width * 0.8  # max total offset span
-
+max_offset = bar_width * 0.8
 for x_val, indices in groups.items():
     n = len(indices)
     if n == 1:
         idx = indices[0]
-        color = color_list[idx % len(color_list)]  # pick color based on index
-        b = plt.bar(x_val, freqs[idx], width=bar_width, alpha=0.6, color=color, label=cts[idx])
-        bars.append(b)
+        color = color_list[idx % len(color_list)]
+        ax2.bar(x_val, freqs[idx], width=bar_width, alpha=0.6,
+                color=color, label=f"Ciphertext {idx+1}")
     else:
         offsets = np.linspace(-max_offset/2, max_offset/2, n)
         for i_offset, idx in enumerate(indices):
             color = color_list[idx % len(color_list)]
-            b = plt.bar(x_val + offsets[i_offset], freqs[idx], width=bar_width * 0.9, alpha=0.6, color=color, label=cts[idx])
-            bars.append(b)
-            
-plt.xticks(rotation=45, ha='right')
-plt.xlabel("Access Time")
-plt.ylabel("Frequency")
+            ax2.bar(x_val + offsets[i_offset], freqs[idx], width=bar_width * 0.9, alpha=0.6,
+                    color=color, label=f"Ciphertext {idx+1}")
 
-# Create legend without duplicates
-handles, labels = plt.gca().get_legend_handles_labels()
+#ax2.set_xticks(ct_time_fixed)
+#ax2.set_xticklabels(ct_time_fixed, rotation=45, ha='right')
+ax2.set_xlabel("Access Time (cycles)")
+ax2.set_ylabel("Frequency")
+ax2.set_title("(a) Fixed Seed for Global Evictions")
+#ax2.tick_params(axis='x', rotation=45)
+
+#ax2.ticklabel_format(style='plain', axis='x')  # disable scientific notation
+
+# Remove duplicate legend entries in ax2
+handles, labels = ax2.get_legend_handles_labels()
 by_label = dict(zip(labels, handles))
-plt.legend(by_label.values(), by_label.keys(), title="Access Time", bbox_to_anchor=(1.05, 1), loc='upper left')
+#ax2.legend(by_label.values(), by_label.keys(), bbox_to_anchor=(1.05, 1), loc='upper left')
+ax2.legend(by_label.values(), by_label.keys(), bbox_to_anchor=(0.85, 1), loc='upper right')
+ax2.xaxis.set_major_formatter(ScalarFormatter())
+ax2.ticklabel_format(style='plain', useOffset=False)
+ax2.set_xlim(637693800, 637696800)
+ax2.set_xticks(np.arange(637694000, 637697000, 1000))
+
+           
+# ---- First plot: histogram for random ----
+for i, (ct, times) in enumerate(data.items()):
+    ax1.hist(times, alpha=0.6, label=f"Ciphertext {i+1}", color=color_list[i % len(color_list)])
+ax1.set_xlabel("Access Time (cycles)")
+ax1.set_ylabel("Frequency")
+ax1.set_title("(b) Random Seed for Global Evictions")
+ax1.legend()
+ax1.xaxis.set_major_formatter(ScalarFormatter())
+ax1.ticklabel_format(style='plain', axis='x')  # disable scientific notation
 
 plt.tight_layout()
-plt.savefig("access_times_histogram_f.pdf")
+plt.savefig("access_times_histogram_combined.pdf")
