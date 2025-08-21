@@ -10,6 +10,8 @@ echo "Running Experiments for Fig 1"
 
 ## Saving existing files in this 
 if [ -d "${REPRO_DIR}/repro_results/L1512B.SeedFixed" ]; then
+    echo "WARNING: moving existing $REPRO_DIR/repro_results/L1512B.SeedFixed to $REPRO_DIR/repro_results/L1512B.SeedFixed_old"
+    echo "To avoid future data loss, please move this to a different location as this will be clobbered in future runs."
     rm -rf $REPRO_DIR/repro_results/L1512B.SeedFixed_old ; 
     mv "${REPRO_DIR}/repro_results/L1512B.SeedFixed" "$REPRO_DIR/repro_results/L1512B.SeedFixed_old" >/dev/null 2>&1
 fi
