@@ -33,21 +33,18 @@ cd rco_reproduction;
 ```
 
 2. Inside the docker container:
-* Navigate to `run_scripts`:
 ```
-cd /code/reproduction/run_scripts
+cd /code/reproduction/run_scripts # Navigate to the folder
+./run_exp_all.sh # Run all experiments
 ```
-* Run all experiments:
-```
-./run_exp_all.sh`
-```
-
-Notes:
-* This will fire 100 AES runs in parallel (assuming 100 cores), and will take around 15 hours to complete.
-* Please clear the `/code/reproduction/repro_results` folder before running, if you ran any experiments previously.
 
 3. Figures:
 All the figures are generated in `/code/reproduction/analysis_scripts/fig*``
+
+Notes:
+* This will fire 100 AES simulations in parallel (assuming 100 cores), and takes around 15 hours to complete.
+* Please clear `/code/reproduction/repro_results` before running, if you ran any experiments previously.
+
 
 ### For Reproduction Of Just RCO (SEC'25) Results
 
@@ -60,22 +57,18 @@ cd rco_reproduction;
 ```
 
 2. Inside the docker container:
-* Navigate to `run_scripts`:
 ```
-cd /code/reproduction/run_scripts
+cd /code/reproduction/run_scripts # Navigate to the folder
+./run_exp1.sh # Experiment for figure 1
 ```
-* Run only experiments for figure 1:
-```
-./run_exp1.sh
-```
-
-Notes:
-* This will fire 100 AES runs in parallel (assuming 100 cores), and  will take around 5 hours to complete.
-* Please clear the `/code/reproduction/repro_results/L1512B.SeedFixed` folder before running, if you ran any experiments previously.
-
 
 3. Figures:
 Figure 1 will be generated in `/code/reproduction/analysis_scripts/fig1_4/fig1``
+
+Notes:
+* This will fire 100 AES simulations in parallel (assuming 100 cores), and takes around 5 hours to complete.
+* Please clear `/code/reproduction/repro_results/L1512B.SeedFixed` before running, if you ran any experiments previously.
+
 
 
 
