@@ -34,8 +34,8 @@ cd rco_reproduction
 
 2. Inside the docker container:
 ```
-cd /code/reproduction/run_scripts # Navigate to the folder
-./run_exp_all.sh # Run all experiments
+cd /code/reproduction/run_scripts 
+./run_exp_all.sh 
 ```
 
 3. Figures:
@@ -58,8 +58,8 @@ cd rco_reproduction
 
 2. Inside the docker container:
 ```
-cd /code/reproduction/run_scripts # Navigate to the folder
-./run_exp1.sh # Experiment for figure 1
+cd /code/reproduction/run_scripts 
+./run_exp1.sh 
 ```
 
 3. Figures:
