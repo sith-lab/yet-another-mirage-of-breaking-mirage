@@ -22,9 +22,7 @@ git clone https://github.com/sith-lab/yet-another-mirage-of-breaking-mirage.git 
 ```
 
 
-### For Full Reproduction (including our fixes).
-
-For full reproduction of all our figures 1 to 4:
+### For Full Reproduction (Figures 1 to 4) - 15 hours
 
 1. Build the docker container and gem5 *with* our fixes. 
 ```
@@ -45,9 +43,9 @@ Notes:
 * Please clear `/code/reproduction/repro_results` before running, if you ran any experiments previously.
 
 
-### For Reproduction Of Just RCO (SEC'25) Results
+### For Reproducting RCO [SEC'25] Results Only (Our Figure 1)
 
-For only reproducing our Figure 1, i.e., just the results of Systematic Evaluation of Randomized Cache Designs against Cache Occupancy (RCO) published at SEC'25,
+This only reproduces our Figure 1, i.e., just the results of Systematic Evaluation of Randomized Cache Designs against Cache Occupancy (RCO) published at SEC'25,
 
 1. Build the docker container and gem5 *without* our fixes. 
 ```
