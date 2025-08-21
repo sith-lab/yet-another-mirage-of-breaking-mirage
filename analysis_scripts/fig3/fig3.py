@@ -131,6 +131,7 @@ ax1.set_title("(b) Random Seed for Global Evictions")
 ax1.legend()
 ax1.xaxis.set_major_formatter(ScalarFormatter())
 ax1.ticklabel_format(style='plain', axis='x')  # disable scientific notation
+ax1.set_xticks(np.arange(637600000, 637900000, 100000))
 
 plt.tight_layout()
 plt.savefig("access_times_histogram_combined.pdf")
