@@ -39,7 +39,7 @@ cd /code/reproduction/run_scripts # Navigate to the folder
 ```
 
 3. Figures:
-All the figures are generated in `/code/reproduction/analysis_scripts/fig*``
+All the figures are generated in `/code/reproduction/analysis_scripts/fig*`
 
 Notes:
 * This will fire 100 AES simulations in parallel (assuming 100 cores), and takes around 15 hours to complete.
@@ -63,7 +63,7 @@ cd /code/reproduction/run_scripts # Navigate to the folder
 ```
 
 3. Figures:
-Figure 1 will be generated in `/code/reproduction/analysis_scripts/fig1_4/fig1``
+Figure 1 will be generated in `/code/reproduction/analysis_scripts/fig1_4/fig1`
 
 Notes:
 * This will fire 100 AES simulations in parallel (assuming 100 cores), and takes around 5 hours to complete.
