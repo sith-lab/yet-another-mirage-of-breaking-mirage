@@ -43,9 +43,9 @@ Notes:
 * Please clear `/code/reproduction/repro_results` before running, if you ran any experiments previously.
 
 
-### For Reproducing Only RCO's AES Cache Occupancy Attack (Our Figure 1)
+### For Reproducing RCO AES Cache Occupancy Attack (Our Figure 1)
 
-This only reproduces our Figure 1, i.e., just the results of Systematic Evaluation of Randomized Cache Designs against Cache Occupancy (RCO) published at SEC'25,
+This only reproduces our Figure 1. i.e., the results of Systematic Evaluation of Randomized Cache Designs against Cache Occupancy (RCO) published at SEC'25,
 
 1. Build the docker container and gem5 *without* our fixes. 
 ```
