@@ -6,9 +6,9 @@ Authors: Chris Cao, Gururaj Saileshwar.
 Code for reproducing our results in the paper: [https://gururaj-s.github.io/assets/pdf/Yet-Another-Mirage.pdf](https://gururaj-s.github.io/assets/pdf/Yet-Another-Mirage.pdf).
 
 ## Requirements
-1. *SW*: Docker
-2. *HW*: 100 compute cores, 200GB of memory.
-3. *Time*:
+1. SW: Docker
+2. HW: 100 compute cores, 200GB of memory.
+3. Time:
    - 5 hours for reproducing just the RCO paper [SEC'25] result (Fig 1 in our Yet Another Mirage paper)
    - 15 hours for reproducing all our results (Fig 1 to 4 in our Yet Another Mirage paper).
 
