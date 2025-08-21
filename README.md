@@ -38,7 +38,6 @@ cd /code/reproduction/run_scripts
 ./run_exp_all.sh 
 ```
 
-3. Figures:
 All the figures are generated in `/code/reproduction/analysis_scripts/fig*`
 
 Notes:
@@ -62,7 +61,6 @@ cd /code/reproduction/run_scripts
 ./run_exp1.sh 
 ```
 
-3. Figures:
 Figure 1 will be generated in `/code/reproduction/analysis_scripts/fig1_4/fig1`
 
 Notes:
