@@ -43,7 +43,7 @@ Notes:
 * Please clear `/code/reproduction/repro_results` before running, if you ran any experiments previously.
 
 
-### For Reproducting RCO [SEC'25] Results Only (Our Figure 1)
+### For Reproducing Only RCO's AES Cache Occupancy Attack (Our Figure 1)
 
 This only reproduces our Figure 1, i.e., just the results of Systematic Evaluation of Randomized Cache Designs against Cache Occupancy (RCO) published at SEC'25,
 
