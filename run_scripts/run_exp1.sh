@@ -16,8 +16,9 @@ if [ -d "${REPRO_DIR}/repro_results/L1512B.SeedFixed" ]; then
     mv "${REPRO_DIR}/repro_results/L1512B.SeedFixed" "$REPRO_DIR/repro_results/L1512B.SeedFixed_old" >/dev/null 2>&1
 fi
 
-for i in {1..100}; do
+for i in {1..200}; do
     $REPRO_DIR/run_scripts/run_mirage_repro.sh $i &
+    sleep 5
 done
 
 

@@ -8,8 +8,9 @@ REPRO_DIR=/code/reproduction
 
 echo "Running Experiments for Fig 1, 2, 4"
 
-for i in {1..100}; do
+for i in {1..200}; do
     $REPRO_DIR/run_scripts/run_mirage.sh $i &
+    sleep 5
 done
 
 

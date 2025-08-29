@@ -10,8 +10,8 @@ export SPEC_DIR=/code
 ##          == Rand Seed, 64kB
 ###
 
-## Run 10 serial simulations
-for j in {1..10}; do
+## Run 17 serial simulations
+for j in {1..17}; do
 
     ## for all 3 configs
     for all_configs in "512B Fixed" "512B Rand" "64kB Rand"; do

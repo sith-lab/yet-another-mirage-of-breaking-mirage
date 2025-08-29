@@ -8,8 +8,8 @@ export SPEC_DIR=/code
 ## Configs: == Fixed Seed, 512B
 ###
 
-## Run 10 serial simulations
-for j in {1..10}; do
+## Run 17 serial simulations
+for j in {1..17}; do
 
     for all_configs in "512B Fixed"; do
 	parts=($all_configs)
