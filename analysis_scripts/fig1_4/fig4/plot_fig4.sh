@@ -8,13 +8,18 @@ REPRO_DIR=/code/reproduction
 mkdir -p ./data
 
 echo "Data analysis for Figure 4"
-#mirage (rco)
-$REPRO_DIR/analysis_scripts/fig1_4/run_analysis.sh /code/aes/analysis/mirage/key1 /code/aes/analysis/mirage/key2 > $REPRO_DIR/analysis_scripts/fig1_4/fig4/data/ge_mirage_rco.csv
 
 #mirage (reproduction) - three configurations (512B L1 Cache + Fixed Seed, 512B L1 Cache + Rand Seed, 64kB L1 Cache + Rand Seed) 
 $REPRO_DIR/analysis_scripts/fig1_4/run_analysis.sh $REPRO_DIR/repro_results/L1512B.SeedFixed/profiled $REPRO_DIR/repro_results/L1512B.SeedFixed/victim > $REPRO_DIR/analysis_scripts/fig1_4/fig4/data/ge_mirage_repro_fixedseed_512B.csv
 $REPRO_DIR/analysis_scripts/fig1_4/run_analysis.sh $REPRO_DIR/repro_results/L1512B.SeedRand/profiled $REPRO_DIR/repro_results/L1512B.SeedRand/victim > $REPRO_DIR/analysis_scripts/fig1_4/fig4/data/ge_mirage_repro_randseed_512B.csv
 $REPRO_DIR/analysis_scripts/fig1_4/run_analysis.sh $REPRO_DIR/repro_results/L164kB.SeedRand/profiled $REPRO_DIR/repro_results/L164kB.SeedRand/victim > $REPRO_DIR/analysis_scripts/fig1_4/fig4/data/ge_mirage_repro_randseed_64kB.csv
+
+# sass, scatter, ceaser (rco)
+$REPRO_DIR/analysis_scripts/fig1_4/run_analysis.sh /code/aes/analysis/sass/key1 /code/aes/analysis/sass/key2 > $REPRO_DIR/analysis_scripts/fig1_4/fig4/data/ge_sass_rco.csv
+$REPRO_DIR/analysis_scripts/fig1_4/run_analysis.sh /code/aes/analysis/scatter/key1 /code/aes/analysis/scatter/key2 > $REPRO_DIR/analysis_scripts/fig1_4/fig4/data/ge_scatter_rco.csv
+$REPRO_DIR/analysis_scripts/fig1_4/run_analysis.sh /code/aes/analysis/ceaser/key1 /code/aes/analysis/ceaser/key2 > $REPRO_DIR/analysis_scripts/fig1_4/fig4/data/ge_ceasers_rco.csv
+#$REPRO_DIR/analysis_scripts/fig1_4/run_analysis.sh /code/aes/analysis/mirage/key1 /code/aes/analysis/mirage/key2 > $REPRO_DIR/analysis_scripts/fig1_4/fig4/data/ge_mirage_rco.csv
+
 
 ###########
 ## Plot Fig 4
