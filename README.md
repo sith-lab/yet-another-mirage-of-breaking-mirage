@@ -7,7 +7,7 @@ Code for reproducing our results in the paper: [https://gururaj-s.github.io/asse
 
 ## Requirements
 1. SW: Docker
-2. HW: 100 compute cores, 200GB of memory.
+2. HW: 200 compute cores, 500GB of memory.
 3. Time:
    - 8 hours for reproducing just the RCO paper [SEC'25] result (Fig 1 in our Yet Another Mirage paper)
    - 25 hours for reproducing all our results (Fig 1 to 4 in our Yet Another Mirage paper).
